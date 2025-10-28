@@ -11,7 +11,7 @@ import { ref, set } from 'firebase/database';
 // set() los reemplazará completamente con los nuevos datos que le proporciones.
 
 
-import { auth, database } from '../../config/firebaseConfigEjemplo'; // Importa 'database' también
+import { auth, database } from '../../config/firebaseConfig'; // Importa 'database' también
 import { useNavigation } from '@react-navigation/native';
 
 const RegistroScreen = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import { auth } from '../config/firebaseConfigEjemplo';
+import { auth } from '../config/firebaseConfig';
 import { useNavigation } from '@react-navigation/native'; 
 
 const SettingsScreen = () => {

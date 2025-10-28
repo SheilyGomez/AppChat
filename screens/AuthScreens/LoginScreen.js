@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../config/firebaseConfigEjemplo';
+import { auth } from '../../config/firebaseConfig';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {

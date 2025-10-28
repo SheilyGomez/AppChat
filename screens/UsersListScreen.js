@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { db } from '../config/firebaseConfigEjemplo';
+import { database as db } from '../config/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
 
 const UsersListScreen = ({ navigation, route }) => {
