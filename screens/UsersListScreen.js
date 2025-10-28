@@ -10,7 +10,7 @@ const UsersListScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     const usersRef = ref(db, 'Usuarios');
-    
+  
     onValue(usersRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
