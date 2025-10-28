@@ -14,7 +14,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import LoginScreen from './screens/AuthScreens/LoginScreen';
 import RegistroScreen from './screens/AuthScreens/RegistroScreen';
 
-import { auth } from './config/firebaseConfig'; // Importa auth
+import { auth } from './config/firebaseConfigEjemplo'; // Importa auth
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

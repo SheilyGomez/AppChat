@@ -1,34 +1,28 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet,  Alert,  TouchableOpacity, ActivityIndicator} from 'react-native';
-import { signInWithEmailAndPassword } from 'firebase/auth'; 
-import { auth } from '../../config/firebaseConfig'; 
+import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../config/firebaseConfigEjemplo';
 import { useNavigation } from '@react-navigation/native';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'; 
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); // Estado para el indicador de carga
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-  // Función para manejar el inicio de sesión
   const handleLogin = async () => {
-    
     if (!email || !password) {
       Alert.alert('Error', 'Por favor, introduce tu correo y contraseña.');
       return;
     }
 
-    setLoading(true); // Activa el indicador de carga
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Si el inicio de sesión es exitoso, AppNavigator detectará el cambio de estado
-      // del usuario y navegará automáticamente a AppStack.
       Alert.alert('¡Éxito!', 'Has iniciado sesión correctamente.');
     } catch (error) {
-      // Manejo de errores de Firebase
       let errorMessage = 'Error al iniciar sesión. Inténtalo de nuevo.';
-      if (error.code === 'auth/invalid-email:' + error) {
+      if (error.code === 'auth/invalid-email') {
         errorMessage = 'El formato del correo electrónico es inválido.';
       } else if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
         errorMessage = 'Credenciales incorrectas. Verifica tu correo y contraseña.';
@@ -36,9 +30,8 @@ const LoginScreen = () => {
         errorMessage = 'Demasiados intentos fallidos. Inténtalo más tarde.';
       }
       Alert.alert('Error de inicio de sesión', errorMessage);
-      console.error('Error de inicio de sesión:', error.message);
     } finally {
-      setLoading(false); // Desactiva el indicador de carga
+      setLoading(false);
     }
   };
 
@@ -90,7 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f0f2f5', // Fondo claro
+    backgroundColor: '#f0f2f5',
   },
   title: {
     fontSize: 28,
@@ -112,10 +105,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: '#fff',
     fontSize: 16,
-    color: '#333',
   },
   button: {
-    backgroundColor: '#007bff', // Azul brillante
+    backgroundColor: '#007bff',
     width: '90%',
     padding: 15,
     borderRadius: 8,
