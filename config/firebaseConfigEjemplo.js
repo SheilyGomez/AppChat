@@ -4,23 +4,25 @@ import { getDatabase } from "firebase/database";
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyABCDEFGHIJKLMNOPQRSTUVWXYZ123456789",
+  apiKey: "AIzaSyD0INdj2IUUa-LKoCXH9Y-0BCxF4NyB7t8",
   authDomain: "appchat-51fdf.firebaseapp.com",
   databaseURL: "https://appchat-51fdf-default-rtdb.firebaseio.com",
   projectId: "appchat-51fdf",
-  storageBucket: "appchat-51fdf.appspot.com",
-  messagingSenderId: "123456789012",
-  appId: "1:123456789012:web:abcdef123456789",
-  measurementId: "G-ABCDEFGHIJ"
+  storageBucket: "appchat-51fdf.firebasestorage.app",
+  messagingSenderId: "614833571557",
+  appId: "1:614833571557:web:f2dce513b17bb46378b60c",
+  measurementId: "G-S2L4FJ5DJL"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ CAMBIA ESTO - usa getAuth en lugar de initializeAuth
-import { getAuth } from 'firebase/auth';
+// Inicializa el servicio de autenticación de Firebase
+export const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 
-export const auth = getAuth(app);
-export const db = getDatabase(app);
+// Inicializa el servicio de Realtime Database
+export const database = getDatabase(app);
 
 export default app;
